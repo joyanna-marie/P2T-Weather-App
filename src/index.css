@@ -1,6 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
+  background: linear-gradient(to right, #9b2f92, #b92eae);
   color: white;
   text-align: center;
   margin: 0;
@@ -43,7 +43,7 @@ body {
 .search-button {
   padding: 10px 15px;
   border: none;
-  background-color: #ff9800;
+  background-color: #5bb0ca;
   color: white;
   border-radius: 20px;
   margin-left: 10px;
@@ -51,7 +51,7 @@ body {
 }
 
 .search-button:hover {
-  background-color: #e68900;
+  background-color: #5a58be;
 }
 
 .city-name {
