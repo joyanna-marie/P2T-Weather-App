@@ -9,40 +9,55 @@ function App() {
   const [error, setError] = useState(null);
   const [city, setCity] = useState('New York');
   const [weather, setWeather] = useState(null);
+  
   useEffect(() => {
     setLoading(true);
     getWeather(city)
-    .then((data) => {
-      setWeather(data);
-      setLoading(false);
-    })
-    .catch((error) => {
-      setError(error.message);
-      setLoading(false);
-    });
+      .then((data) => {
+        setWeather(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
+      });
   }, [city]);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const inputCity = e.target.elements['search-city'].value;
+    if (inputCity.trim()) {
+      setCity(inputCity);
+    }
+  };
+
   return (
-    <main>
-    {error && <p>{error}</p>}
-    {loading ? (
-      <p>Weather Loading...</p>
-    ) : (
-      <section>
-        <form>
-          <label htmlFor="search-city">
-            <input type="text" name="search-city" id="search-city" placeholder='Search for Weather' />
-            <button type="submit">Search</button>
-          </label>
-        </form>
-        <h1>Weather Details for: {city}</h1>
-        <p>{weather?.main.temp} | {weather?.weather[0].description}</p>
-        <p>{getDateFromHours(weather?.sys.sunset)}</p>
-        <p>{weather?.main.humidity}</p>
-        <p>{weather?.main.sea_level}</p>
-        <p>{weather?.wind.speed}</p>
-      </section>
-    )}
+    <main className="weather-container">
+      {error && <p className="error-message">{error}</p>}
+      {loading ? (
+        <p className="loading">Weather Loading...</p>
+      ) : (
+        <section className="weather-card">
+          <form onSubmit={handleSearch} className="search-form">
+            <input 
+              type="text" 
+              name="search-city" 
+              id="search-city" 
+              placeholder='Search for Weather' 
+              className="search-input"
+            />
+            <button type="submit" className="search-button">Search</button>
+          </form>
+          <h1 className="city-name">Weather in {city}</h1>
+          <div className="weather-details">
+            <p className="temperature">{weather?.main.temp}°C | {weather?.weather[0].description}</p>
+            <p>Sunset: {getDateFromHours(weather?.sys.sunset)}</p>
+            <p>Humidity: {weather?.main.humidity}%</p>
+            <p>Sea Level: {weather?.main.sea_level || 'N/A'} hPa</p>
+            <p>Wind Speed: {weather?.wind.speed} m/s</p>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

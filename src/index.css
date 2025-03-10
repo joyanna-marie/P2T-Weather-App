@@ -1,13 +1,75 @@
 body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+  text-align: center;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.weather-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.search-input {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  width: 70%;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #ff9800;
+  color: white;
+  border-radius: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #e68900;
+}
+
+.city-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.weather-details p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.error-message {
+  color: #ff4d4d;
+}
+
+.loading {
+  font-size: 18px;
+  font-weight: bold;
 }
