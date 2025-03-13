@@ -50,7 +50,7 @@ function App() {
           </form>
           <h1 className="city-name">Weather in {city}</h1>
           <div className="weather-details">
-            <p className="temperature">{weather?.main.temp}°C | {weather?.weather[0].description}</p>
+            <p className="temperature">{weather?.main.temp}°F | {weather?.weather[0].description}</p>
             <p>Sunset: {getDateFromHours(weather?.sys.sunset)}</p>
             <p>Humidity: {weather?.main.humidity}%</p>
             <p>Sea Level: {weather?.main.sea_level || 'N/A'} hPa</p>
